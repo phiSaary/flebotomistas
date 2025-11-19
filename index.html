@@ -1029,7 +1029,9 @@
       } else {
         endSimulation();
       }
-function endSimulation() {
+    }
+
+    function endSimulation() {
   document.getElementById("scenario-card").classList.add("hidden");
   document.getElementById("results-card").classList.remove("hidden");
 
@@ -1038,16 +1040,8 @@ function endSimulation() {
     "<p>Gracias por completar las misiones.</p>" +
     "<p>Puedes avisar a la persona responsable del proceso que ya terminaste.</p>";
 
-  // 🔥 ESTA ES LA LÍNEA QUE ACTIVA EL ENVÍO AUTOMÁTICO
   enviarResultados();
 }
-
-
-      var summaryEl = document.getElementById("summary");
-      summaryEl.innerHTML =
-        "<p>Gracias por completar las misiones.</p>" +
-        "<p>Puedes avisar a la persona responsable del proceso que ya terminaste.</p>";
-    }
 
     // =========================
     // 6. Acceso restringido (contraseña SYNLAB)
@@ -1502,22 +1496,6 @@ function enviarResultados() {
   .then(() => console.log("✔ Datos enviados al Google Sheet"))
   .catch(err => console.error("Error enviando datos:", err));
 }
-// ======================================================================
-//  ENVÍO AUTOMÁTICO A GOOGLE SHEET
-// ======================================================================
-
-function enviarResultados() {
-  const endpoint = "https://script.google.com/macros/s/AKfycbyH72yHREb0p4tBH7_eUKzowhOfuEnij1i1kXEctgx6aavVgz4fMPHHrulKB6Ar_3Yr/exec";
-
-  fetch(endpoint, {
-    method: "POST",
-    mode: "no-cors",
-    body: JSON.stringify(responses)
-  })
-  .then(() => console.log("✔ Datos enviados al Google Sheet"))
-  .catch(err => console.error("Error enviando datos:", err));
-}
-
   </script>
 </body>
 </html>
