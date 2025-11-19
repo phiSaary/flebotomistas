@@ -1029,12 +1029,19 @@
       } else {
         endSimulation();
       }
-  function endSimulation() {
+function endSimulation() {
   document.getElementById("scenario-card").classList.add("hidden");
   document.getElementById("results-card").classList.remove("hidden");
 
-  enviarResultados(); // ← ESTA ES LA LÍNEA QUE ACTIVARÁ EL GUARDADO
+  var summaryEl = document.getElementById("summary");
+  summaryEl.innerHTML =
+    "<p>Gracias por completar las misiones.</p>" +
+    "<p>Puedes avisar a la persona responsable del proceso que ya terminaste.</p>";
+
+  // 🔥 ESTA ES LA LÍNEA QUE ACTIVA EL ENVÍO AUTOMÁTICO
+  enviarResultados();
 }
+
 
       var summaryEl = document.getElementById("summary");
       summaryEl.innerHTML =
